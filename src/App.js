@@ -8,9 +8,6 @@ import TodoList from './components/TodoList';
 class App extends Component {
 
   render() {
-    const {todos, checkBoxChangeHandler} = this.props;
-    console.log(this.props);
-    
     return (
       <div className="App">
         <div className="App-header">
@@ -20,7 +17,7 @@ class App extends Component {
         <div className="container">
           <div className="App-intro">
             <TodoForm />
-             <TodoList todos={todos} checkBoxChangeHandler={checkBoxChangeHandler}/> 
+            <TodoList /> 
           </div>
         </div>
         
