@@ -35,7 +35,13 @@ function updateCurrent(state, text)
 }
 
 function toggleTodo(state, index) {
-    var newState = Object.assign({}, state);
-    newState.todos[index].isCompleted = !newState.todos[index].isCompleted;
-    return newState;
+    var newTodos = state.todos.map((todo, i) => {
+        if(index === i)
+        {
+            todo.isCompleted = !todo.isCompleted;
+        }
+        return todo;
+    });
+
+    return Object.assign({}, state, {todos:  newTodos});
 }
