@@ -1,4 +1,4 @@
-import {ADD_TODO, TOGGLE_TODO, UPDATE_CURRENT} from '../actions/index';
+import {ADD_TODO, TOGGLE_TODO, UPDATE_CURRENT, LOAD_RECEIVED} from '../actions/index';
 
 const initialState = {
   todos: [
@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export default function todoApp(state=initialState, action){
+    console.log(action.type);
     switch(action.type)
     {
         case ADD_TODO:
@@ -18,6 +19,8 @@ export default function todoApp(state=initialState, action){
             return updateCurrent(state, action.text);
         case TOGGLE_TODO:
             return toggleTodo(state, action.index);
+        case LOAD_RECEIVED:
+            return loadTodos(state, action.todos);
         default:
             return state;
     }
@@ -43,5 +46,10 @@ function toggleTodo(state, index) {
         return todo;
     });
 
-    return Object.assign({}, state, {todos:  newTodos});
+    return Object.assign({}, state, {todos: newTodos});
+}
+
+function loadTodos(state, todos)
+{
+    return Object.assign({}, state, {todos: todos});
 }
